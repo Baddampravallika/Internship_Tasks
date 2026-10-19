@@ -1,0 +1,10 @@
+# problem name: Company Logo
+# https://www.hackerrank.com/challenges/most-commons/problem
+if __name__ == '__main__':
+    s = input()
+    from collections import Counter
+
+    freq = Counter(s)
+
+    for char, count in sorted(freq.items(), key=lambda x: (-x[1], x[0]))[:3]:
+        print(char, count)
