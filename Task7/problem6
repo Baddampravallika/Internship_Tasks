@@ -1,0 +1,17 @@
+# program name: Pangrams
+# https://www.hackerrank.com/challenges/pangrams/problem
+
+def pangrams(s):
+    s = s.lower()
+
+    for ch in "abcdefghijklmnopqrstuvwxyz":
+        if ch not in s:
+            return "not pangram"
+
+    return "pangram"
+
+
+if __name__ == '__main__':
+    s = input().strip()
+    result = pangrams(s)
+    print(result)
