@@ -1,0 +1,40 @@
+# problem name: Weighted Uniform Strings
+# https://www.hackerrank.com/challenges/weighted-uniform-string/problem
+
+#!/bin/python3
+
+import os
+
+def weightedUniformStrings(s, queries):
+    weights = set()
+    current_weight = 0
+    previous_char = ''
+
+    for ch in s:
+        value = ord(ch) - ord('a') + 1
+
+        if ch == previous_char:
+            current_weight += value
+        else:
+            current_weight = value
+
+        weights.add(current_weight)
+        previous_char = ch
+
+    return ["Yes" if q in weights else "No" for q in queries]
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input().strip()
+    q = int(input().strip())
+
+    queries = []
+    for _ in range(q):
+        queries.append(int(input().strip()))
+
+    result = weightedUniformStrings(s, queries)
+
+    fptr.write('\n'.join(result) + '\n')
+    fptr.close()
