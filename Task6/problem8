@@ -1,0 +1,24 @@
+# problem name: Tuples
+# https://www.hackerrank.com/challenges/python-tuples/problem
+def tuple_hash(t):
+    mult = 1000003
+    x = 0x345678
+    length = len(t)
+
+    for item in t:
+        x = (x ^ hash(item)) * mult
+        length -= 1
+        mult += 82520 + length + length
+
+    x += 97531
+
+    if x == -1:
+        x = -2
+
+    return x
+
+
+if __name__ == '__main__':
+    n = int(input())
+    t = tuple(map(int, input().split()))
+    print(tuple_hash(t))
